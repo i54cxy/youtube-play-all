@@ -1,15 +1,29 @@
 const apiKey = "AIzaSyDel30Yj7Gqi7V8hIypFi1TLhF7uaZIsIk";
 
-const createPlayAllButton = (channelId) => {
-  const targetHref =
-    "https://www.youtube.com/playlist?list=UU" + channelId.slice(2);
+const waitForElement = (selector) => {
+  return new Promise((resolve) => {
+    if (document.querySelector(selector)) {
+      return resolve(document.querySelector(selector));
+    }
 
-  const actionRows = document.getElementsByTagName(
-    "yt-flexible-actions-view-model"
-  );
-  if (actionRows.length) {
-    const actionRow = actionRows[0];
+    const observer = new MutationObserver((mutations) => {
+      if (document.querySelector(selector)) {
+        observer.disconnect();
+        resolve(document.querySelector(selector));
+      }
+    });
 
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+  });
+};
+
+const createPlayAllButton = async (channelId) => {
+  const actionRow = await waitForElement("yt-flexible-actions-view-model");
+  // console.log(actionRow);
+  if (actionRow) {
     // LOL!
     const playAllButtonDiv = document.createElement("div");
     playAllButtonDiv.className = "yt-flexible-actions-view-model-wiz__action";
@@ -24,20 +38,23 @@ const createPlayAllButton = (channelId) => {
 
     playAllButtonDiv.style.opacity = 0;
     playAllButtonDiv.style["animation-fill-mode"] = "forwards";
-    playAllButtonDiv.animate([{ opacity: 1 }], {
-      duration: 150,
-      fill: "forwards",
-      easing: "ease-in",
-    });
+
+    const targetHref =
+      "https://www.youtube.com/playlist?list=UU" + channelId.slice(2);
+    button.onclick = () => {
+      window.open(targetHref);
+    };
 
     button.appendChild(textDiv);
     buttonViewModel.appendChild(button);
     playAllButtonDiv.appendChild(buttonViewModel);
     actionRow.appendChild(playAllButtonDiv);
 
-    button.onclick = () => {
-      window.open(targetHref);
-    };
+    playAllButtonDiv.animate([{ opacity: 1 }], {
+      duration: 150,
+      fill: "forwards",
+      easing: "ease-in",
+    });
   }
 };
 
@@ -67,7 +84,7 @@ const start = async () => {
       }
 
       const json = await response.json();
-      console.log(json);
+      // console.log(json);
       const result = json.items;
       if (result?.length) {
         const channelId = result[0].id;
@@ -86,8 +103,8 @@ const observeUrlChange = () => {
   const observer = new MutationObserver((mutations) => {
     if (oldHref !== document.location.href) {
       oldHref = document.location.href;
-      // Leave time for the new page to load (untile I find a better solution).
-      setTimeout(start, 200);
+      // Leave time for the new page to load and stablize (untile I find a better solution).
+      setTimeout(start, 1000);
     }
   });
   observer.observe(body, { childList: true, subtree: true });
