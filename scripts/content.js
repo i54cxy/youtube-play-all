@@ -41,11 +41,22 @@ const createPlayAllButton = (channelId) => {
   }
 };
 
-const start = async () => {
+const getHandle = () => {
   const href = window.location.href;
-  const aPos = href.indexOf("@");
-  if (aPos !== -1) {
-    const handle = href.slice(aPos + 1);
+  const startPos = href.indexOf("/@");
+  if (startPos !== -1) {
+    const endPos = href.indexOf("/", startPos + 1);
+    if (endPos !== -1) {
+      return href.substring(startPos + 2, endPos);
+    } else {
+      return href.substring(startPos + 2);
+    }
+  }
+};
+
+const start = async () => {
+  const handle = getHandle();
+  if (handle) {
     const requestUrl = `https://www.googleapis.com/youtube/v3/channels?key=${apiKey}&forHandle=${handle}&part=id`;
     // console.log(requestUrl);
 
