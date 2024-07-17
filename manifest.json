@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Play All button for YouTube",
   "description": "Brings back the Play All button on YouTube.",
-  "version": "0.0.0.2",
+  "version": "0.0.0.3",
   "action": {
     "default_icon": "icon.png"
   },

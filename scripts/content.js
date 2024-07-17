@@ -51,7 +51,7 @@ const createPlayAllButton = async (channelId) => {
     actionRow.appendChild(playAllButtonDiv);
 
     playAllButtonDiv.animate([{ opacity: 1 }], {
-      duration: 150,
+      duration: 100,
       fill: "forwards",
       easing: "ease-in",
     });
@@ -104,7 +104,7 @@ const observeUrlChange = () => {
     if (oldHref !== document.location.href) {
       oldHref = document.location.href;
       // Leave time for the new page to load and stablize (untile I find a better solution).
-      setTimeout(start, 1000);
+      setTimeout(start, 500);
     }
   });
   observer.observe(body, { childList: true, subtree: true });
