@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "build": "rm -rf node_modules/ & npm install",
-    "deploy": "webpack --mode=production"
+    "deploy": "webpack --mode=production & rm -rf node_modules/"
   },
   "author": "Kevin Chen",
   "license": "ISC",
