@@ -1,12 +1,12 @@
 import { apiKey } from "../secret/apiKey";
 import { createPlayAllButton } from "./utils/createPlayAllButton";
+import { debounce } from "./utils/debounce";
 import { getHandle } from "./utils/getHandle";
 
 const start = async () => {
   const handle = getHandle();
   if (handle) {
     const requestUrl = `https://www.googleapis.com/youtube/v3/channels?key=${apiKey}&forHandle=${handle}&part=id`;
-    console.log(requestUrl);
 
     try {
       const response = await fetch(requestUrl);
@@ -15,7 +15,6 @@ const start = async () => {
       }
 
       const json = await response.json();
-      // console.log(json);
       const result = json.items;
       if (result?.length) {
         const channelId = result[0].id;
@@ -44,4 +43,6 @@ const observeUrlChange = () => {
 };
 
 window.onload = observeUrlChange;
+window.onresize = debounce(start, 300);
+
 start();
