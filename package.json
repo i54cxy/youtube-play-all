@@ -1,0 +1,16 @@
+{
+  "name": "youtube-play-all",
+  "version": "1.0.0",
+  "description": "A chrome extension that brings back the \"Play All\" button on YouTube channels",
+  "private": true,
+  "scripts": {
+    "build": "rm -rf node_modules/ & npm install",
+    "deploy": "webpack --mode=production"
+  },
+  "author": "Kevin Chen",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
