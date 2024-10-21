@@ -1,0 +1,10 @@
+{
+  "extName": {
+    "message": "Schaltfläche „Alle abspielen“ für YouTube",
+    "description": "Extension name."
+  },
+  "playAllButtonLabel": {
+    "message": "Alle wiedergeben",
+    "description": "Label for the injected button."
+  }
+}

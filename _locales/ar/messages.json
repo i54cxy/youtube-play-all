@@ -1,0 +1,10 @@
+{
+  "extName": {
+    "message": "زر تشغيل الكل على YouTube",
+    "description": "Extension name."
+  },
+  "playAllButtonLabel": {
+    "message": "تشغيل الكل",
+    "description": "Label for the injected button."
+  }
+}

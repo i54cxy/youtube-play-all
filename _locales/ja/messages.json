@@ -1,0 +1,10 @@
+{
+  "extName": {
+    "message": "YouTubeのすべて再生ボタン",
+    "description": "Extension name."
+  },
+  "playAllButtonLabel": {
+    "message": "すべて再生",
+    "description": "Label for the injected button."
+  }
+}

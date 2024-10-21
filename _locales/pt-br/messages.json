@@ -1,0 +1,10 @@
+{
+  "extName": {
+    "message": "Botão Reproduzir tudo para o YouTube",
+    "description": "Extension name."
+  },
+  "playAllButtonLabel": {
+    "message": "Reproduzir tudo",
+    "description": "Label for the injected button."
+  }
+}

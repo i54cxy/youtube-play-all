@@ -1,0 +1,10 @@
+{
+  "extName": {
+    "message": "Кнопка «Воспроизвести все» для YouTube",
+    "description": "Extension name."
+  },
+  "playAllButtonLabel": {
+    "message": "Воспроизвести все",
+    "description": "Label for the injected button."
+  }
+}

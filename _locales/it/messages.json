@@ -1,0 +1,10 @@
+{
+  "extName": {
+    "message": "Pulsante Riproduci tutto per YouTube",
+    "description": "Extension name."
+  },
+  "playAllButtonLabel": {
+    "message": "Riproduci tutti",
+    "description": "Label for the injected button."
+  }
+}

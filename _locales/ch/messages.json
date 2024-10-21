@@ -1,0 +1,10 @@
+{
+  "extName": {
+    "message": "YouTube的全部播放按钮",
+    "description": "Extension name."
+  },
+  "playAllButtonLabel": {
+    "message": "全部播放",
+    "description": "Label for the injected button."
+  }
+}

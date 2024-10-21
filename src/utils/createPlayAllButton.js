@@ -12,7 +12,7 @@ export const createPlayAllButton = async (channelId) => {
     // LOL!
     const playAllButtonDiv = document.createElement("div");
     playAllButtonDiv.dataset.injectedByPABFYT = "true";
-    console.log(playAllButtonDiv);
+    // console.log(playAllButtonDiv);
     playAllButtonDiv.className = "yt-flexible-actions-view-model-wiz__action";
     const buttonViewModel = document.createElement("button-view-model");
     buttonViewModel.className = "yt-spec-button-view-model";
@@ -21,7 +21,8 @@ export const createPlayAllButton = async (channelId) => {
       "yt-spec-button-shape-next yt-spec-button-shape-next--outline yt-spec-button-shape-next--mono yt-spec-button-shape-next--size-m";
     const textDiv = document.createElement("div");
     textDiv.className = "yt-spec-button-shape-next__button-text-content";
-    textDiv.innerHTML = "Play all";
+    // @ts-ignore
+    textDiv.innerHTML = chrome.i18n.getMessage("playAllButtonLabel");
 
     playAllButtonDiv.style.opacity = "0";
     playAllButtonDiv.style["animation-fill-mode"] = "forwards";

@@ -1,0 +1,10 @@
+{
+  "extName": {
+    "message": "YouTube의 모든 재생 버튼",
+    "description": "Extension name."
+  },
+  "playAllButtonLabel": {
+    "message": "모두 재생",
+    "description": "Label for the injected button."
+  }
+}

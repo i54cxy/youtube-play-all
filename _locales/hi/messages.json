@@ -1,0 +1,10 @@
+{
+  "extName": {
+    "message": "यूट्यूब के लिए प्ले ऑल बटन",
+    "description": "Extension name."
+  },
+  "playAllButtonLabel": {
+    "message": "सभी चलाएं",
+    "description": "Label for the injected button."
+  }
+}

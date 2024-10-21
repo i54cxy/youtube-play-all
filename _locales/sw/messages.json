@@ -1,0 +1,10 @@
+{
+  "extName": {
+    "message": "Spela alla-knappen för YouTube",
+    "description": "Extension name."
+  },
+  "playAllButtonLabel": {
+    "message": "Spela upp alla",
+    "description": "Label for the injected button."
+  }
+}

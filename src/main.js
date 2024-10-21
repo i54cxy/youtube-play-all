@@ -2,8 +2,12 @@ import { apiKey } from "../secret/apiKey";
 import { createPlayAllButton } from "./utils/createPlayAllButton";
 import { debounce } from "./utils/debounce";
 import { getHandle } from "./utils/getHandle";
+import { isOnYouTube } from "./utils/isOnYouTube";
 
 const start = async () => {
+  if (!isOnYouTube()) {
+    return;
+  }
   const handle = getHandle();
   if (handle) {
     const requestUrl = `https://www.googleapis.com/youtube/v3/channels?key=${apiKey}&forHandle=${handle}&part=id`;
