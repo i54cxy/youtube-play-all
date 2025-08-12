@@ -1,32 +1,15 @@
-import { apiKey } from "../secret/apiKey";
 import { createPlayAllButton } from "./utils/createPlayAllButton";
 import { debounce } from "./utils/debounce";
-import { getHandle } from "./utils/getHandle";
+import { getChannelId } from "./utils/getChannelId";
 import { isOnYouTube } from "./utils/isOnYouTube";
 
 const start = async () => {
   if (!isOnYouTube()) {
     return;
   }
-  const handle = getHandle();
-  if (handle) {
-    const requestUrl = `https://www.googleapis.com/youtube/v3/channels?key=${apiKey}&forHandle=${handle}&part=id`;
-
-    try {
-      const response = await fetch(requestUrl);
-      if (!response.ok) {
-        throw new Error(`Response status: ${response.status}`);
-      }
-
-      const json = await response.json();
-      const result = json.items;
-      if (result?.length) {
-        const channelId = result[0].id;
-        createPlayAllButton(channelId);
-      }
-    } catch (error) {
-      // console.error(error.message);
-    }
+  const channelId = getChannelId();
+  if (channelId) {
+    createPlayAllButton(channelId);
   }
 };
 
